@@ -37,7 +37,8 @@ RUN tar -zxC /var -f /ttrss.tar.gz && \
     rm /ttrss.tar.gz /feedly.tar.gz /video.tar.gz && \
     rmdir /var/tt-rss-feedly-theme-master /var/ttrss-videoframes-master && \
     cp /var/www/config.php-dist /var/www/config.php && \
-    chown www-data -R /var/www
+    chown www-data -R /var/www && \
+    sed -i "s/'SESSION_COOKIE_LIFETIME', 86400/'SESSION_COOKIE_LIFETIME', 2592000/" /var/www/config.php
 
 WORKDIR /var/www
 
